@@ -1,0 +1,664 @@
+/* estrutura de todas as PAGINAS */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: antiquewhite;
+    font-family: Arial, sans-serif;
+}
+
+ul {
+    color: chocolate;
+}
+
+h2 {
+    text-align: left;
+    font-size: 42px;
+    color: chocolate;
+    margin-bottom: 8px;
+    padding: 30px;
+}
+
+h3 {
+    text-align: left;
+    color: chocolate;
+    margin: 0;
+    padding: 0;
+}
+
+h5 {
+    font-size: 32px;
+    color: chocolate;
+    margin-bottom: 10px;
+}
+
+/* HEADER, LOGO E NAVEGAÇÃO */
+
+header {
+    width: 100%;
+    height: 80px;
+    background-color: #2f1d15;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+}
+
+.logo h3 {
+    color: bisque;
+    font-size: 23px;
+}
+
+.logo span {
+    color: chocolate;
+}
+
+nav {
+    margin: 0;
+    padding: 0;
+    position: static;
+}
+
+nav > ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    position: relative;
+}
+
+nav a {
+    display: block;
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: bisque;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: chocolate;
+    color: white;
+}
+
+nav li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 160px;
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+    list-style: none;
+    border-radius: 10px;
+}
+
+nav li:hover > ul {
+    display: block;
+}
+
+nav li ul a {
+    color: #2f1d15;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+nav li ul a:hover {
+    background-color: chocolate;
+    color: white;
+}
+
+.menu {
+    display: flex;
+    gap: 4px;
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.menu:hover .submenu {
+    display: block;
+}
+
+/* BANNER das paginas (INDEX) */
+
+.banner {
+    text-align: center;
+    padding: 70px 20px 40px;
+}
+
+.banner h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.banner p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.banner a {
+    display: inline-block;
+    background-color: chocolate;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.banner a:hover {
+    background-color: #e87516;
+}
+
+.banner-conteudo a {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+}
+
+/* PRODUTOS E CARDS */
+
+.produtos {
+    padding: 20px 40px 50px;
+}
+
+.produtos h2 {
+    text-align: center;
+    font-size: 32px;
+    color: chocolate;
+    margin-bottom: 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #2d1b14;
+    min-height: 220px;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.card h3 {
+    text-align: center;
+    color: chocolate;
+    font-size: 22px;
+    margin: 10px 0 15px;
+}
+
+.card p {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.card strong {
+    display: inline-block;
+    color: white;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.card button {
+    background-color: #e87516;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background-color: #ff922e;
+    transform: scale(1.05);
+}
+
+/* pagina CONTATO */
+
+.alinha{
+    display: flex;
+    width: 100%;
+    padding: 0px;
+    align-items: flex-start;
+}
+.info{
+    width: 350px;
+    padding: 25px;
+    margin: 200px auto;
+    background-color: #2f1d15;
+    border-radius: 10px;
+    grid-template-columns: 0.75fr 1.25fr;
+}
+.info h3{
+    padding: 15px;
+    text-align: center;
+    color: chocolate;
+}
+.info h4{
+    padding: 5px;
+    color: bisque;
+    margin-top: 0;
+    font-size: 18px;
+}
+.info p{
+    color: white;
+}
+.contato {
+    width: 320px;
+    height: fit-content;
+    padding: 30px;
+    margin: 100px;
+    background-color: bisque;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.contato h2 {
+    text-align: center;
+    font-size: 22px;
+}
+
+.contato h5 {
+    color: chocolate;
+    font-family: Arial, sans-serif;
+    font-size: 14px; 
+    margin-top: 8px;
+}
+
+.contato label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-weight: bold;
+}
+
+.contato input {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px; 
+}
+
+.contato input:focus {
+    outline: none;
+    border-color: chocolate;
+}
+
+.contato button {
+    width: 100%;
+    padding: 12px;
+    background-color: chocolate;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer; 
+}
+
+.contato button:hover {
+    background-color: #8b4513;
+}
+
+.sobre-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+}
+
+.sobre-link a {
+     color: chocolate;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold; 
+}
+
+.sobre-link a:hover {
+    text-decoration: underline;
+}
+/* pagina LOGIN */
+
+.login {
+    width: 350px;
+    padding: 30px;
+    margin: 120px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.login h2 {
+    text-align: center;
+    color: chocolate;
+    margin-bottom: 25px;
+}
+
+.login label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-weight: bold;
+}
+
+.login input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.login input:focus {
+    outline: none;
+    border-color: chocolate;
+}
+
+.login button {
+    width: 100%;
+    padding: 12px;
+    background-color: chocolate;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login button:hover {
+    background-color: #8b4513;
+}
+
+/* pagina DASHBOARD */
+
+.indicador {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    padding: 30px;
+}
+
+.kpi {
+    background-color: #2f1d15;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.kpi strong {
+    font-size: 30px;
+    color: white;
+}
+
+.kpi p {
+    margin: 0 0 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+th {
+    padding: 14px 16px;
+    text-align: left;
+    background-color: #f5e3bc;
+    color: #3b2a22;
+    font-size: 13px;
+}
+
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #ddd;
+    color: #3b3b3b;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.status-pronto {
+    background-color: #dff3e7;
+    color: #37845a;
+}
+
+.status-preparando {
+    background-color: #fff0bd;
+    color: #9a7414;
+}
+
+/*  pagina SOBRE*/
+
+.sobre {
+    padding-top: 40px;
+}
+
+.sobre-banner {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.sobre-banner h1 {
+    font-size: 42px;
+    color: chocolate;
+    margin-bottom: 10px;
+}
+
+.sobre-banner p {
+    font-size: 20px;
+    margin: 0;
+}
+
+.sobre-conteudo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sobre-card {
+    background-color: #2d1b14;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    min-height: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.sobre-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.sobre-card h2 {
+    color: chocolate;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.sobre-card p {
+    line-height: 1.6;
+}
+
+.valores {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.valores > h2 {
+    text-align: center;
+    color: chocolate;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.valores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.valores-grid div {
+    text-align: center;
+    padding: 20px;
+}
+
+.valores-grid h3 {
+    text-align: center;
+    color: chocolate;
+    margin-bottom: 10px;
+}
+
+.valores-grid p {
+    line-height: 1.5;
+}
+
+.sobre-final {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.sobre-final h2 {
+    text-align: center;
+    color: chocolate;
+    font-size: 32px;
+}
+
+.sobre-final p {
+    margin-bottom: 25px;
+}
+
+.sobre-final a {
+    display: inline-block;
+    background-color: #e87516;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sobre-final a:hover {
+    background-color: #ff922e;
+}
+
+/*rodape das paginas*/
+
+footer {
+    margin-top: 30px;
+    background-color: #2f1d15;
+    color: #e9dccf;
+}
+.rodape-grid span{
+    color: chocolate;
+}
+.rodape-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 24px;
+    padding: 40px;
+    background-color: #2f1d15;
+    color: #e9dccf;
+    font-size: 14px;
+}
+
+.rodape-grid h4 {
+    font-family: Arial, sans-serif;
+    color: bisque;
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.rodape-grid p {
+    color: gainsboro;
+}
+
+.rodape-grid a {
+    display: block;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    color: gainsboro;
+    margin-bottom: 8px;
+    transition: 0.3s;
+}
+
+.rodape-grid a:hover {
+    color: chocolate;
+}
+
+.copyright {
+    border-top: 1px solid #604236;
+    margin: 0 40px;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.copyright p {
+    margin: 0;
+    padding: 5px;
+    color: #e9dccf;
+}
