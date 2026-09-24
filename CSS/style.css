@@ -16,6 +16,8 @@ body {
     background-color: antiquewhite;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 ul {
@@ -484,13 +486,17 @@ nav li ul a:hover {
 /* pagina DASHBOARD */
 
 .indicador {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
     padding: 30px;
 }
-.indicador h5{
-     margin: 0 0 20px 42px;
+.indicador h5 {
+    grid-column: 1 / -1;
+    margin: 0 0 5px 10px;
     padding: 0;
     text-align: left;
     font-size: 32px;
@@ -519,12 +525,12 @@ nav li ul a:hover {
 
 table {
     width: calc(100% - 60px);
-    max-width: 100%;
+    max-width: 1400px;
     border-collapse: collapse;
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
-    margin: 20px 30px;
+    margin: 20px auto;
 }
 
 th {
@@ -682,7 +688,7 @@ td {
 /*rodape das paginas*/
 
 footer {
-    margin-top: 30px;
+    margin-top: auto;
     background-color: #2f1d15;
     color: #e9dccf;
 }
@@ -734,4 +740,36 @@ footer {
     margin: 0;
     padding: 5px;
     color: #e9dccf;
+}
+
+@media (max-width: 1000px) {
+
+    .indicador {
+        grid-template-columns: repeat(2, 1fr);
+        }
+}
+
+
+@media (max-width: 600px) {
+
+    .indicador {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+     .indicador h5 {
+        font-size: 26px;
+        margin-left: 0;
+    }
+
+    table {
+        width: calc(100% - 30px);
+        margin: 20px auto;
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        padding: 10px 8px;
+    }
+
 }
