@@ -494,6 +494,7 @@ nav li ul a:hover {
     gap: 18px;
     padding: 30px;
 }
+
 .indicador h5 {
     grid-column: 1 / -1;
     margin: 0 0 5px 10px;
@@ -526,10 +527,7 @@ nav li ul a:hover {
 table {
     width: calc(100% - 60px);
     max-width: 1400px;
-    border-collapse: collapse;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
+    
     margin: 20px auto;
 }
 
@@ -742,34 +740,3 @@ footer {
     color: #e9dccf;
 }
 
-@media (max-width: 1000px) {
-
-    .indicador {
-        grid-template-columns: repeat(2, 1fr);
-        }
-}
-
-
-@media (max-width: 600px) {
-
-    .indicador {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-     .indicador h5 {
-        font-size: 26px;
-        margin-left: 0;
-    }
-
-    table {
-        width: calc(100% - 30px);
-        margin: 20px auto;
-        font-size: 13px;
-    }
-
-    th,
-    td {
-        padding: 10px 8px;
-    }
-
-}
