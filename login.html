@@ -6,6 +6,7 @@
     <title>wattGYM</title>
     <link rel="icon" href="IMG/watt.jpg">
     <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/formulario.js"defer></script>
 
 </head>
 <body>
@@ -35,14 +36,23 @@
         <form action="dashboard.html">
             <h2>login</h2>
 
-            <label for="email"></label>
+            <label for="email">email</label>
             <input type="email" placeholder="digite seu email">
 
-            <label for="senha"></label>
-            <input type="password" placeholder="digite sua senha">
+        <div class="form-grupo"></div>
 
+            <label for="senha">senha</label>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+            <button type="button" id="mostrarSenha">Mostrar Senha</button>
+
+        </form>
             <button>entrar</button>
         </form>
+
+        <form class="form-area" id="formLogin">
+        ...
+        </form>
+
     </div>
        <footer>
 
