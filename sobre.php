@@ -1,34 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<?php include 'header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - WattGYM</title>
-    <link rel="icon" href="IMG/watt.jpg">
-    <link rel="stylesheet" href="CSS/style.css">
-</head>
-
-<body>
-
-   <header>
-
-    <div class="logo">
-        <img src="IMG/watt.jpg" alt="Logo WattGYM">
-        <h3>Watt<span>GYM</span></h3>
-    </div>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="produtos.html">Produtos</a></li>
-            <li><a href="sobre.html">Sobre</a></li>
-            <li><a href="contato.html">Contato</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
-
-</header>
 
     <main class="sobre">
         <section class="sobre-banner">
@@ -118,51 +89,4 @@
 
     </main>
 
-    <footer>
-
-        <div class="rodape-grid">
-
-            <div>
-                <h4>Watt<span>GYM</span></h4>
-                <p>
-                    Onde a evolução começa.
-                </p>
-            </div>
-
-            <div>
-
-                <h4>Navegação</h4>
-
-                <a href="index.html">Home</a>
-                <a href="produtos.html">Produtos</a>
-                <a href="sobre.html">Sobre</a>
-                <a href="contato.html">Contato</a>
-
-            </div>
-
-            <div>
-
-                <h4>Contato</h4>
-
-                <p>(81) 1945-1500</p>
-                <p>Rua do Embaço, 200</p>
-                <p>RicardoSexy@gmail.com</p>
-
-            </div>
-
-        </div>
-
-        <div class="copyright">
-            <p>
-                © 2026 WattGYM - Todos os direitos reservados.
-            </p>
-        </div>
-
-    </footer>
-
-</body>
-
-</html>
-
-</body>
-</html>
+<?php include 'footer.php'; ?>

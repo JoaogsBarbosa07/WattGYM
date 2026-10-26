@@ -68,6 +68,13 @@ header {
     gap: 10px;
     flex-shrink: 0;
 }
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+}
 
 .logo img {
     width: 63px;
@@ -499,6 +506,44 @@ transform: translateY(0);
 
 .login button:hover {
     background-color: #8b4513;
+}
+
+.senha-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.senha-container input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+.senha-container button#mostrarSenha {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-90%);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.senha-container button#mostrarSenha img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: block;
 }
 
 /* pagina DASHBOARD */

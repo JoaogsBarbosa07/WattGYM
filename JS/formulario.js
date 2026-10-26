@@ -1,57 +1,19 @@
-const campoSenha = document.querySelector("#senha");
-const mostrarSenha = document.querySelector("#mostrarSenha");
+document.addEventListener("DOMContentLoaded", function () {
+    const btnMostrarSenha = document.getElementById("mostrarSenha");
+    const inputSenha = document.getElementById("senha");
+    const iconeOlho = document.getElementById("iconeOlho");
 
-
-if (campoSenha && mostrarSenha) {
-    mostrarSenha.addEventListener("click", () => {
-        const estaOculta = campoSenha.type === "password";
-
-        campoSenha.type = estaOculta ? "text" : "password";
-        mostrarSenha.textContent = estaOculta
-            ? "Ocultar senha"
-            : "Mostrar senha";
-    });
-}
-const formLogin = document.querySelector("#formLogin");
-
-if (formLogin) {
-    formLogin.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const email = document.querySelector("#email").value.trim();
-        const senha = document.querySelector("#senha").value.trim();
-        if (email === "" || senha === "") {
-            alert("Preencha e-mail e senha.");
-            return;
-        }
-        alert("Login validado para demonstracao.");
-    });
-}
-
-function mostrarToast(mensagem) {
-    const toast = document.querySelector("#toast");
-    if (!toast) return;
-
-    toast.textContent = mensagem;
-    toast.classList.add("visivel");
-
-    setTimeout(() => {
-        toast.classList.remove("visivel");
-    }, 3000);
-}
-
-const formContato = document.querySelector("#formContato");
-
-if (formContato) {
-    formContato.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        if (!formContato.checkValidity()) {
-            formContato.reportValidity();
-            return;
-        }
-
-        mostrarToast("Mensagem enviada com sucesso!");
-        formContato.reset();
-    });
-}
+    if (btnMostrarSenha && inputSenha && iconeOlho) {
+        btnMostrarSenha.addEventListener("click", function () {
+            if (inputSenha.type === "password") {
+                inputSenha.type = "text";
+                iconeOlho.src = "IMG/olho-aberto.png";
+                iconeOlho.alt = "Ocultar senha";
+            } else {
+                inputSenha.type = "password";
+                iconeOlho.src = "IMG/olho-fechado.png";
+                iconeOlho.alt = "Mostrar senha";
+            }
+        });
+    }
+});
