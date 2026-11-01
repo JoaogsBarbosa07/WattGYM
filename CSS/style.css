@@ -21,7 +21,7 @@ body {
 }
 
 ul {
-    color: chocolate;
+    color: #d2691e;
 }
 
 h2 {
@@ -540,8 +540,109 @@ transform: translateY(0);
 }
 
 .senha-container button#mostrarSenha img {
-    width: 20px;
-    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    object-fit: contain;
+    display: block;
+}
+    /* pagina CADASTRO */
+
+.cadastro {
+    width: 90%;
+    max-width: 350px;
+    padding: 30px;
+    margin: 120px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.cadastro h2 {
+    text-align: center;
+    color: chocolate;
+    margin-bottom: 25px;
+    padding: 0;
+}
+
+.cadastro label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-weight: bold;
+}
+
+.cadastro input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.cadastro input:focus {
+    outline: none;
+    border-color: chocolate;
+}
+
+.cadastro button {
+    width: 100%;
+    padding: 12px;
+    background-color: chocolate;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cadastro button:hover {
+    background-color: #8b4513;
+}
+
+.cadastro-senha-container,
+.senha-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.cadastro-senha-container input,
+.senha-container input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+.cadastro-senha-container button,
+.senha-container button {
+    position: absolute;
+    right: 12px;
+    top: 37%;
+    transform: translateY(-50%);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastro-senha-container button img,
+.senha-container button img {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
     object-fit: contain;
     display: block;
 }

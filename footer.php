@@ -6,7 +6,7 @@
             </div>
             <div>
                 <h4>Navegação</h4>
-                <a href="index.php">Home</a>
+                <a href="inicio.php">Home</a>
                 <a href="produtos.php">Produtos</a>
                 <a href="sobre.php">Sobre</a>
                 <a href="contato.php">Contato</a>

@@ -15,6 +15,11 @@
             </button>
         </div>
 
+        <p class="sobre-link">
+            Não tem conta?
+            <a href="cadastro.php">Cadastre-se</a>
+        </p>
+
         <button type="submit">Entrar</button>
     </form>
 </div>

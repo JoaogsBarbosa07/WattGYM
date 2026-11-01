@@ -16,4 +16,33 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    const btnMostrarConfirmar = document.getElementById("mostrarConfirmarSenha");
+    const inputConfirmar = document.getElementById("confirmarSenha");
+    const iconeOlhoConfirmar = document.getElementById("iconeOlhoConfirmar");
+
+    if (btnMostrarConfirmar && inputConfirmar && iconeOlhoConfirmar) {
+        btnMostrarConfirmar.addEventListener("click", function () {
+            if (inputConfirmar.type === "password") {
+                inputConfirmar.type = "text";
+                iconeOlhoConfirmar.src = "IMG/olho-aberto.png";
+                iconeOlhoConfirmar.alt = "Ocultar senha";
+            } else {
+                inputConfirmar.type = "password";
+                iconeOlhoConfirmar.src = "IMG/olho-fechado.png";
+                iconeOlhoConfirmar.alt = "Mostrar senha";
+            }
+        });
+    }
+
+    const formCadastro = document.getElementById("formCadastro");
+    if (formCadastro) {
+        formCadastro.addEventListener("submit", function (e) {
+            if (inputSenha.value !== inputConfirmar.value) {
+                e.preventDefault();
+                alert("As senhas não coincidem. Por favor, verifique.");
+                inputConfirmar.focus();
+            }
+        });
+    }
 });
