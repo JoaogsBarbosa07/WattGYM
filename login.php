@@ -1,7 +1,17 @@
 <?php include 'header.php'; ?>
 
+<div class="card-login">
+
+    <img src="assets/IMG/braco_esq_login.png"
+         class="braco_esquerdo">
+
+    <img src="assets/IMG/braco_dir_login.png"
+         class="braco_direito">
+
+    <div class="formulario_login">
+
 <div class="login">
-    <form action="dashboard.php">
+        <form action="dashboard.php">
         <h2>Login</h2>
 
         <label for="email">Email</label>
@@ -24,5 +34,10 @@
     </form>
 </div>
 
+        </div>
+
+    </div>
+
+</div>
 
 <?php include 'footer.php'; ?>

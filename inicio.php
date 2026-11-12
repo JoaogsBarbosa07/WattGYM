@@ -1,3 +1,4 @@
+
 <?php include 'header.php'; ?>
 
     <section class="banner">
@@ -17,7 +18,7 @@
 
              <div class="card">
 
-    <img src="IMG/whey.jpg" alt="Whey Protein">
+    <img src="assets/IMG/whey.jpg" alt="Whey Protein">
 
     <h3>Whey Protein</h3>
 
@@ -38,7 +39,7 @@
 
            <div class="card">
 
-    <img src="IMG/creatina.jpg" alt="Creatina">
+    <img src="assets/IMG/creatina.jpg" alt="Creatina">
 
     <h3>Creatina</h3>
 
@@ -59,7 +60,7 @@
 
             <div class="card">
 
-    <img src="IMG/pre-treino.jpg" alt="Pré-Treino">
+    <img src="assets/IMG/pre-treino.jpg" alt="Pré-Treino">
 
     <h3>Pré-Treino</h3>
 

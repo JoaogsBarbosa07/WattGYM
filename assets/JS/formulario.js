@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
         btnMostrarSenha.addEventListener("click", function () {
             if (inputSenha.type === "password") {
                 inputSenha.type = "text";
-                iconeOlho.src = "IMG/olho-aberto.png";
+                iconeOlho.src = "assets/IMG/olho-aberto.png";
                 iconeOlho.alt = "Ocultar senha";
             } else {
                 inputSenha.type = "password";
-                iconeOlho.src = "IMG/olho-fechado.png";
+                iconeOlho.src = "assets/IMG/olho-fechado.png";
                 iconeOlho.alt = "Mostrar senha";
             }
         });
@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
         btnMostrarConfirmar.addEventListener("click", function () {
             if (inputConfirmar.type === "password") {
                 inputConfirmar.type = "text";
-                iconeOlhoConfirmar.src = "IMG/olho-aberto.png";
+                iconeOlhoConfirmar.src = "assets/IMG/olho-aberto.png";
                 iconeOlhoConfirmar.alt = "Ocultar senha";
             } else {
                 inputConfirmar.type = "password";
-                iconeOlhoConfirmar.src = "IMG/olho-fechado.png";
+                iconeOlhoConfirmar.src = "assets/IMG/olho-fechado.png";
                 iconeOlhoConfirmar.alt = "Mostrar senha";
             }
         });

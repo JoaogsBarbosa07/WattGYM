@@ -332,6 +332,7 @@ nav li ul a:hover {
     margin: 0;
     background-color: #2f1d15;
     border-radius: 10px;
+    
     flex: 1;
 }
 
@@ -359,8 +360,9 @@ nav li ul a:hover {
     height: fit-content;
     padding: 30px;
     margin: 0;
-    background-color: bisque;
+    background-color: #ffe4c4;
     border-radius: 10px;
+    border: 1px solid #d2691e;
     font-size: 14px;
     flex: 1;
 }
@@ -459,8 +461,9 @@ transform: translateY(0);
     max-width: 350px;
     padding: 30px;
     margin: 120px auto;
-    background-color: white;
+    background-color: #ffe4c4;
     border-radius: 10px;
+    border: 1px solid #d2691e;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -474,7 +477,7 @@ transform: translateY(0);
 .login label {
     display: block;
     margin-bottom: 6px;
-    color: #333;
+    color: #d2691e;
     font-weight: bold;
 }
 
@@ -506,6 +509,29 @@ transform: translateY(0);
 
 .login button:hover {
     background-color: #8b4513;
+}
+.formulario_login {
+    position: relative;
+    z-index: 2;
+}
+
+.braco_esquerdo,
+.braco_direito {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.braco_esquerdo {
+    left: 283px;
+}
+
+.braco_direito {
+    right: 286px;
 }
 
 .senha-container {
@@ -551,12 +577,14 @@ transform: translateY(0);
 
 .cadastro {
     width: 90%;
-    max-width: 350px;
+    max-width: 550px;
     padding: 30px;
-    margin: 120px auto;
-    background-color: white;
+    margin: 60px auto;
+    background-color: #ffe4c4;
     border-radius: 10px;
+    border: 1px solid #d2691e;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-color: #d2691e;
 }
 
 .cadastro h2 {
@@ -569,7 +597,7 @@ transform: translateY(0);
 .cadastro label {
     display: block;
     margin-bottom: 6px;
-    color: #333;
+    color: #d2691e;
     font-weight: bold;
 }
 
@@ -580,6 +608,9 @@ transform: translateY(0);
 
     border: 1px solid #ccc;
     border-radius: 6px;
+}
+.cadastro ::placeholder{
+    color: #ccc;
 }
 
 .cadastro input:focus {
@@ -602,7 +633,30 @@ transform: translateY(0);
 .cadastro button:hover {
     background-color: #8b4513;
 }
+.card-cadastro{
+    position: relative;
+    overflow: visible;
+}
+.formulario{
+    position: relative;
+    z-index: 2;
+}
 
+.braco{
+    position: absolute;
+    width: 230px;
+    top: 25%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+}
+.esquerda {
+    right: 66%;
+}
+
+.direita {
+    left: 66.6%;
+}
 .cadastro-senha-container,
 .senha-container {
     position: relative;
@@ -646,7 +700,19 @@ transform: translateY(0);
     object-fit: contain;
     display: block;
 }
-
+.input-grupo{
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+.input-grupo .grupo{
+    flex: 1;
+}
+.input-grupo .grupo input{
+    width: 100%;
+    margin-bottom: 0;
+}
 /* pagina DASHBOARD */
 
 .indicador {

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WattGYM</title>
     <link rel="icon" href="IMG/watt_.jpg">
-    <link rel="stylesheet" href="CSS/style.css">
-    <script src="JS/formulario.js" defer></script>
+    <link rel="stylesheet" href="assets/CSS/style.css">
+    <script src="assets/JS/formulario.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="logo">
-            <img src="IMG/watt_.jpg" alt="Logo WattGYM">
+            <img src="assets/IMG/watt_.jpg" alt="Logo WattGYM">
             <h3>Watt<span>GYM</span></h3>
         </div>
 <nav>
