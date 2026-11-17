@@ -1,13 +1,12 @@
 <?php include 'header.php'; ?>
 
-    <div class="card-cadastro">
-
+<div class="cadastro">
     <img src="assets/IMG/braco_esq.png" class="braco esquerda">
     <img src="assets/IMG/braco_dir.png" class="braco direita">
 
-    <div class="formulario">
+    <div class="script.js">
 
-<div class="cadastro">
+
     <form action="inicio.php" id="formCadastro">
         <h2>Cadastro</h2>
 

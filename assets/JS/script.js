@@ -46,3 +46,37 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+const inputCPF = document.getElementById('cpf');
+inputCPF?.addEventListener('input', (e) => {
+let v = e.target.value.replace(/\D/g, '');
+v = v.replace(/(\d{3})(\d)/, '$1.$2')
+.replace(/(\d{3})(\d)/, '$1.$2')
+.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+e.target.value = v;
+});
+
+const inputTel = document.getElementById('telefone');
+inputTel?.addEventListener('input', (e) => {
+let v = e.target.value.replace(/\D/g, '');
+v = v.replace(/^(\d{2})(\d)/g, '($1) $2')
+.replace(/(\d{5})(\d)/, '$1-$2');
+e.target.value = v;
+});
+
+const form = document.querySelector('form');
+
+const senha = document.getElementById('senha');
+form?.addEventListener('submit', (e) => {
+if (senha && confirmaSenha && senha.value !== confirmaSenha.value) {
+e.preventDefault();
+alert('As senhas não coincidem!');
+return;
+}});
+
+const confirmaSenha = document.getElementById('confirma_senha');
+if (window.location.pathname.includes('perfil.php')) {
+if (!confirm("Deseja salvar as alterações no telefone?"))
+
+e.preventDefault();
+
+}

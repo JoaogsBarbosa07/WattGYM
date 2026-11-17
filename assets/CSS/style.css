@@ -457,6 +457,7 @@ transform: translateY(0);
 /* pagina LOGIN */
 
 .login {
+    position: relative;
     width: 90%;
     max-width: 350px;
     padding: 30px;
@@ -520,18 +521,19 @@ transform: translateY(0);
     position: absolute;
     width: 300px;
     height: auto;
-    top: 40%;
+    margin: 0 auto;
+    top: 20%;
     transform: translateY(-50%);
-    z-index: 1;
+    z-index: -1;
     pointer-events: none;
 }
 
 .braco_esquerdo {
-    left: 283px;
+    left: -62%;
 }
 
 .braco_direito {
-    right: 286px;
+    right: -61%;
 }
 
 .senha-container {
@@ -576,6 +578,7 @@ transform: translateY(0);
     /* pagina CADASTRO */
 
 .cadastro {
+    position: relative;
     width: 90%;
     max-width: 550px;
     padding: 30px;
@@ -633,10 +636,7 @@ transform: translateY(0);
 .cadastro button:hover {
     background-color: #8b4513;
 }
-.card-cadastro{
-    position: relative;
-    overflow: visible;
-}
+
 .formulario{
     position: relative;
     z-index: 2;
@@ -647,15 +647,15 @@ transform: translateY(0);
     width: 230px;
     top: 25%;
     transform: translateY(-50%);
-    z-index: 1;
+    z-index: -1;
     pointer-events: none;
 }
 .esquerda {
-    right: 66%;
+    right: 90%;
 }
 
 .direita {
-    left: 66.6%;
+    left: 91%;
 }
 .cadastro-senha-container,
 .senha-container {
@@ -757,7 +757,6 @@ transform: translateY(0);
 table {
     width: calc(100% - 60px);
     max-width: 1400px;
-    
     margin: 20px auto;
 }
 
@@ -784,6 +783,7 @@ td {
 
 .status-pronto {
     background-color: #dff3e7;
+    border-radius: 5px;
     color: #37845a;
 }
 
@@ -912,6 +912,16 @@ td {
 .sobre-final a:hover {
     background-color: #ff922e;
 }
+
+/* Estilos novos: mensagens de erro/sucesso e status extra.
+   Fica separado para não mexer no seu style.css. */
+.alerta { max-width: 480px; margin: 1rem auto; padding: .75rem 1rem; border-radius: 8px; font-size: .95rem; }
+.alerta ul { margin: 0; padding-left: 1.2rem; }
+.alerta.erro { background: #3a1515; color: #ffb3b3; border: 1px solid #ff5c5c; }
+.alerta.sucesso { background: #12301c; color: #b6f0c8; border: 1px solid #3ecf6e; }
+.status-cancelado { color: #ff5c5c; }
+.categoria-titulo { margin: 2rem 0 1rem; }
+
 
 /*rodape das paginas*/
 

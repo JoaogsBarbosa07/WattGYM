@@ -81,7 +81,7 @@
                 Encontre produtos para acompanhar sua rotina de treinos.
             </p>
 
-            <a href="produtos.html">
+            <a href="produtos.php">
                 Ver produtos
             </a>
 

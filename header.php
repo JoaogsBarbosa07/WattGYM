@@ -6,7 +6,7 @@
     <title>WattGYM</title>
     <link rel="icon" href="IMG/watt_.jpg">
     <link rel="stylesheet" href="assets/CSS/style.css">
-    <script src="assets/JS/formulario.js" defer></script>
+    <script src="assets/JS/script.js" defer></script>
 </head>
 
 <body>
