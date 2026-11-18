@@ -245,6 +245,9 @@ nav li ul a:hover {
     color: chocolate;
     margin-bottom: 30px;
 }
+.categoria-titulo { 
+    scroll-margin-top: 90px; 
+}
 
 .cards {
     display: grid;
@@ -478,7 +481,7 @@ transform: translateY(0);
 .login label {
     display: block;
     margin-bottom: 6px;
-    color: #d2691e;
+    color: black;
     font-weight: bold;
 }
 
@@ -600,7 +603,7 @@ transform: translateY(0);
 .cadastro label {
     display: block;
     margin-bottom: 6px;
-    color: #d2691e;
+    color: black;
     font-weight: bold;
 }
 
@@ -635,6 +638,25 @@ transform: translateY(0);
 
 .cadastro button:hover {
     background-color: #8b4513;
+}
+.alerta {   
+    padding: 10px; 
+    border-radius: 6px; 
+    margin-bottom: 12px; 
+    color: #fff; 
+}
+
+.alerta.erro { 
+    background: #c0392b; 
+}
+
+.alerta.sucesso { 
+    background: #ffe4c4; 
+}
+
+.alerta a { 
+    color: chocolate; 
+    text-decoration: underline; 
 }
 
 .formulario{
@@ -755,10 +777,15 @@ transform: translateY(0);
 
 
 table {
+    border-radius: 15px;
+    border: 1px solid chocolate;
     width: calc(100% - 60px);
     max-width: 1400px;
     margin: 20px auto;
 }
+
+
+
 
 th {
     padding: 14px 16px;
@@ -791,6 +818,30 @@ td {
     background-color: #fff0bd;
     color: #9a7414;
 }
+.status-pendente { 
+    background-color: #fff0bd; 
+    color: #9a7414; 
+}
+
+.status-pago { 
+    background-color: #dff3e7; 
+    color: #37845a; 
+}
+.status-em-transporte { 
+    background-color: #dbe8fb; 
+    color: #2b5fa8; 
+}
+
+.status-entregue { 
+    background-color: #e4e4e4; 
+    color: #3b3b3b; 
+}
+
+.status-cancelado { 
+    background-color: #fadbd8; 
+    color: #a93226; 
+}
+
 
 
 /*  pagina SOBRE*/
@@ -913,15 +964,139 @@ td {
     background-color: #ff922e;
 }
 
-/* Estilos novos: mensagens de erro/sucesso e status extra.
-   Fica separado para não mexer no seu style.css. */
-.alerta { max-width: 480px; margin: 1rem auto; padding: .75rem 1rem; border-radius: 8px; font-size: .95rem; }
-.alerta ul { margin: 0; padding-left: 1.2rem; }
-.alerta.erro { background: #3a1515; color: #ffb3b3; border: 1px solid #ff5c5c; }
-.alerta.sucesso { background: #12301c; color: #b6f0c8; border: 1px solid #3ecf6e; }
-.status-cancelado { color: #ff5c5c; }
-.categoria-titulo { margin: 2rem 0 1rem; }
+.alerta { max-width: 480px; 
+    margin: 1rem auto; padding: .75rem 1rem; 
+    border-radius: 8px; 
+    font-size: .95rem; 
+}
 
+.alerta ul { 
+    margin: 0; 
+    padding-left: 1.2rem; 
+}
+
+.alerta.erro { 
+    background: #3a1515; 
+    color: #ffb3b3; 
+    border: 1px solid #ff5c5c; 
+}
+
+.alerta.sucesso { 
+    background: #12301c; 
+    color: #b6f0c8; 
+    border: 1px solid #3ecf6e; 
+}
+
+.status-cancelado { 
+    color: #ff5c5c; 
+}
+
+.categoria-titulo { 
+    margin: 2rem 0 1rem; 
+}
+
+/*Pagina de perfil*/
+ 
+.container_perfil {
+    width: calc(100% - 40px);
+    max-width: 680px;
+    margin: 40px auto;
+    padding: 32px 36px;
+    background-color: #ffe4c4;
+    border-radius: 15px;
+    border: 1px solid chocolate;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+ 
+.container_perfil h2 {
+    margin: 0 0 24px;
+    font-size: 32px;
+    color: chocolate;
+    text-align: left;
+}
+ 
+.container_perfil h3 {
+    margin: 28px 0 14px;
+    padding-bottom: 8px;
+    font-size: 20px;
+    color: chocolate;
+    border-bottom: 2px solid #f5e3bc;
+}
+ 
+.container_perfil h2 + form h3:first-child {
+    margin-top: 0;
+}
+ 
+.container_perfil .form-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+ 
+.container_perfil label {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+ 
+.container_perfil input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    font-size: 15px;
+    color: #3b3b3b;
+    background-color: #fdf8ee;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+ 
+.container_perfil input::placeholder {
+    color: #aaa;
+}
+ 
+.container_perfil input:focus {
+    border-color: chocolate;
+    box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.2);
+}
+ 
+.container_perfil .btn-salvar {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: chocolate;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+ 
+.container_perfil .btn-salvar:hover {
+    background-color: #b5571a;
+}
+ 
+.container_perfil .btn-salvar:active {
+    transform: scale(0.98);
+}
+ 
+.container_perfil .alerta {
+    margin: 0 0 20px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+ 
+.container_perfil .alerta.sucesso { background-color: #27ae60; }
+.container_perfil .alerta.erro    { background-color: #c0392b; }
+ 
 
 /*rodape das paginas*/
 

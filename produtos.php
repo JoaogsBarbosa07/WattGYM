@@ -1,51 +1,74 @@
-<?php include 'header.php'; ?>
 
+<?php
+/**
+ * produtos.php
+ 
+ * Catálogo de produtos (RF03), dividido por categoria. Cada categoria vira uma
+ * seção com id, para o menu do header.php rolar até ela (#creatinas etc.)
+ * A lista de produtos está no array $categorias, no topo do arquivo
+ 
+ * @todo Ler os produtos da tabela produtos, em vez de usar o array fixo
+ *
+ * @author João Gabriel
+ */
+// Cada categoria vira uma seção com id, para o menu do header rolar até ela.
+// Os ids precisam bater com os links do header (#suplementos, #creatinas...).
+$categorias = [
+    'suplementos' => [
+        'titulo' => 'Suplementos',
+        'produtos' => [
+            ['Whey Protein', 'Proteína de alta qualidade', 99.00, 'whey.jpg'],
+        ],
+    ],
+    'creatinas' => [
+        'titulo' => 'Creatinas',
+        'produtos' => [
+            ['Creatina', 'Suplemento para performance', 70.00, 'creatina.jpg'],
+        ],
+    ],
+    'pre-treinos' => [
+        'titulo' => 'Pré-treinos',
+        'produtos' => [
+            ['Pré-Treino', 'Energia para seu treino', 119.00, 'pre-treino.jpg'],
+        ],
+    ],
+    'vitaminas' => [
+        'titulo' => 'Vitaminas',
+        'produtos' => [
+            ['Vitaminas', 'Suplemento para reposição', 90.00, 'vitaminas.jpg'],
+        ],
+    ],
+    'acessorios' => [
+        'titulo' => 'Acessórios',
+        'produtos' => [
+            ['Strap', 'Acessório para musculação', 50.00, 'strap.jpg'],
+            ['Cinto para academia', 'Acessório para musculação', 150.00, 'cinto.jpg'],
+        ],
+    ],
+];
+ 
+include 'header.php';
+?>
+ 
 <section class="produtos">
     <h2>Produtos</h2>
-    <div class="cards">
-        <div class="card">
-            <img src="assets/IMG/whey.jpg" alt="Whey Protein">
-            <h3>Whey Protein</h3>
-            <p>Proteína de alta qualidade</p>
-            <strong>R$ 99,00</strong>
-            <button>Comprar</button>
+ 
+    <?php foreach ($categorias as $id => $categoria): ?>
+        <h3 id="<?= $id ?>" class="categoria-titulo"><?= htmlspecialchars($categoria['titulo']) ?></h3>
+ 
+        <div class="cards">
+            <?php foreach ($categoria['produtos'] as [$nome, $descricao, $preco, $imagem]): ?>
+                <div class="card">
+                    <img src="assets/IMG/<?= $imagem ?>" alt="<?= htmlspecialchars($nome) ?>">
+                    <h3><?= htmlspecialchars($nome) ?></h3>
+                    <p><?= htmlspecialchars($descricao) ?></p>
+                    <strong>R$ <?= number_format($preco, 2, ',', '.') ?></strong>
+                    <button type="button">Comprar</button>
+                </div>
+            <?php endforeach; ?>
         </div>
-        <div class="card">
-            <img src="assets/IMG/creatina.jpg" alt="Creatina">
-            <h3>Creatina</h3>
-            <p>Suplemento para performance</p>
-            <strong>R$ 70,00</strong>
-            <button>Comprar</button>
-        </div>
-        <div class="card">
-            <img src="assets/IMG/pre-treino.jpg" alt="Pré-Treino">
-            <h3>Pré-Treino</h3>
-            <p>Energia para seu treino</p>
-            <strong>R$ 119,00</strong>
-            <button>Comprar</button>
-        </div>
-        <div class="card">
-            <img src="assets/IMG/vitaminas.jpg" alt="Vitaminas">
-            <h3>Vitaminas</h3>
-            <p>Suplemento para reposição</p>
-            <strong>R$ 90,00</strong>
-            <button>Comprar</button>
-        </div>
-        <div class="card">
-            <img src="assets/IMG/strap.jpg" alt="Strap">
-            <h3>Strap</h3>
-            <p>Acessório para musculação</p>
-            <strong>R$ 50,00</strong>
-            <button>Comprar</button>
-        </div>
-        <div class="card">
-            <img src="assets/IMG/cinto.jpg" alt="Cinto para academia">
-            <h3>Cinto para academia</h3>
-            <p>Acessório para musculação</p>
-            <strong>R$ 150,00</strong>
-            <button>Comprar</button>
-        </div>
-    </div>
+    <?php endforeach; ?>
 </section>
-
+ 
 <?php include 'footer.php'; ?>
+ 

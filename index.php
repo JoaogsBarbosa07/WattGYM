@@ -1,4 +1,3 @@
 <?php
-header("Location: login.php");
-exit();
-?>
+header('Location: inicio.php');
+exit;
