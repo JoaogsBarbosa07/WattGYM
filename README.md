@@ -87,12 +87,12 @@ WattGYM/
 
 ## Documentação
 
-- Requisitos: [docs/requisitos.md](docs/requisitos.md)
-- Banco de dados (DER e dicionário de dados): [docs/banco-de-dados.md](docs/banco-de-dados.md)
-- Relatório da Sprint 01 (gestão de usuários) e testes: [docs/sprint01-relatorio.md](docs/sprint01-relatorio.md)
-- Telas e fluxos: [docs/telas-e-fluxos.md](docs/telas-e-fluxos.md)
-- Guia de instalação: [docs/instalacao.md](docs/instalacao.md)
-- Manual do usuário: [docs/manual-usuario.md](docs/manual-usuario.md)
+- Requisitos: [DOCS/requisitos.md](DOCS/requisitos.md)
+- Banco de dados (DER e dicionário de dados): [DOCS/banco-de-dados.md](DOCS/banco-de-dados.md)
+- Relatório da Sprint 01 (gestão de usuários) e testes: [DOCS/sprint01-relatorio.md](DOCS/sprint01-relatorio.md)
+- Telas e fluxos: [DOCS/telas-e-fluxos.md](DOCS/telas-e-fluxos.md)
+- Guia de instalação: [DOCS/instalacao.md](DOCS/instalacao.md)
+- Manual do usuário: [DOCS/manual-usuario.md](DOCS/manual-usuario.md)
 - Histórico de versões: [CHANGELOG.md](CHANGELOG.md)
 
 ## Equipe
