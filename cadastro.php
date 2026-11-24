@@ -100,8 +100,7 @@ include 'header.php';
         <?php if (!empty($mensagem)): ?>
             <p class="alerta <?= $tipo_alerta ?>">
                 <?= htmlspecialchars($mensagem) ?>
-                <?php if ($tipo_alerta === 'sucesso'): ?>
-                    <a href="login.php">Faça seu login aqui</a>.
+                <?php if ($tipo_alerta === 'sucesso'): ?>  
                 <?php endif; ?>
             </p>
         <?php endif; ?>

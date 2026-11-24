@@ -6,7 +6,7 @@
 | Aluno ou equipe | Joao Gabriel |
 | Turma / disciplina | DS-2A |
 | Professor(a) | Luiz Carlos |
-| Data de início / prazo | não lembro |
+| Data de início / prazo | 24/11/2026 |sem prazo
 | Versão do código entregue | 0.3.0 (ver `CHANGELOG.md`) |
 
 ## Resumo

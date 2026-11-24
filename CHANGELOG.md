@@ -24,7 +24,7 @@ Sprint 01: gestão de usuários.
 - Exclusão lógica de usuário (`usuario_excluir.php`): caixa de confirmação com Cancelar e Confirmar, só por POST, com token CSRF, status `Baixa` e data da baixa (RF16).
 - Auditoria de cadastros e baixas na tabela `auditoria_usuarios`, sem dados sensíveis (RF17).
 - Tabela `perfis` e colunas `status`, `atualizado_em`, `baixado_em`, `id_perfil` e `id_loja` em `usuarios`. `lojas.ativo`.
-- `database/sprint01.sql`: script único, que pode ser executado mais de uma vez, com os ajustes do banco e usuários fictícios de teste.
+- `database/WattGYM.sql` atualizado: banco completo (12 tabelas e dados de teste), pronto para importar em uma só etapa.
 - `includes/funcoes.php` (controle de administrador, CSRF, auditoria, avisos) e `usuarios.css`.
 - Documentação: relatório da sprint, evidência dos testes (`docs/evidencias/testes-sprint01.txt`) e atualização do DER, do dicionário de dados, dos requisitos, das telas e do manual.
 
@@ -35,7 +35,7 @@ Sprint 01: gestão de usuários.
 - O cadastro pelo site sempre cria o perfil `cliente` e registra a ação na auditoria.
 - O dashboard conta só clientes ativos.
 - O menu do administrador ganhou o link **Usuários**.
-- O README e o guia de instalação passam a usar o `sprint01.sql`, e o usuário de teste agora é `admin@teste.com` (senha `123456`).
+- O README e o guia de instalação passam a usar o `database/WattGYM.sql`, e o usuário de teste agora é `admin@teste.com` (senha `123456`).
 
 ### Segurança
 - Exclusão e cadastro de usuário pelo administrador exigem POST com token CSRF.
@@ -80,9 +80,9 @@ Sprint 01: gestão de usuários.
 - Textos digitados passam por `htmlspecialchars()` antes de aparecer na tela (RNF05).
 - `session_regenerate_id()` depois do login.
 
-## [0.1.0] - data a confirmar pela equipe
+## [0.1.0] - 2026-09-24
 
-### Adicionado
+### Adicionado 
 - Estrutura do site em PHP: páginas de início, produtos, sobre, contato, cadastro, login, perfil e dashboard.
 - Menu e rodapé compartilhados (`header.php` e `footer.php`) e estilos em `style.css`.
 - Banco de dados `wattgym` com as tabelas `usuarios`, `enderecos`, `pedidos`, `itens_pedido`, `pagamentos`, `cupons`, `produtos`, `categorias` e `lojas`.

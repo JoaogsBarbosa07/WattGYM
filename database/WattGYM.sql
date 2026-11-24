@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/11/2026 às 14:27
+-- Tempo de geração: 24/11/2026 às 02:36
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `wattgym`
+-- Banco de dados: `wattgym_entrega`
 --
 
 -- --------------------------------------------------------
@@ -325,7 +325,6 @@ INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `cpf`, `telefone`, `data_
 (4, 'Luiz Arthur', 'SR.perguntas@email.com', '44455566604', '81994445555', '1992-01-30', '2026-10-21 19:25:05', '', 'Ativo', '2026-11-21 10:19:00', NULL, NULL, 1),
 (5, 'Jalyson Henrique', 'Willy_Wonka@email.com', '55566677705', '81995556666', '2000-09-18', '2026-10-21 19:25:05', '', 'Ativo', '2026-11-21 10:19:00', NULL, NULL, 1),
 (6, 'Joao Bigode', 'Odonodessadelicia@email.com', '99988877766', '81998887766', '1590-05-15', '2026-10-26 19:21:06', '', 'Ativo', '2026-11-21 10:19:00', NULL, NULL, 1),
-(7, 'Bigode', 'hemogenin@gmail.com', '', '', '2012-12-12', '2026-11-18 00:54:35', '$2y$10$QeY66LISy1MV0V65F1/y7.jWe7ogQ/i.OQ9dCyYubkGH5oTZGZco6', 'Ativo', '2026-11-21 10:19:00', NULL, NULL, 2),
 (8, 'Admin Teste', 'admin@teste.com', NULL, '', '1990-01-01', '2026-11-21 10:19:01', '$2y$10$pBIdLhlnIPcV/fMX5i4AE.1roos0LvsBfuovk4qzM6zr3nHvFZPN.', 'Ativo', '2026-11-21 10:19:01', NULL, 1, 2),
 (9, 'Maria Atendente', 'maria@teste.com', NULL, '', '1995-03-15', '2026-11-21 10:19:01', '$2y$10$pBIdLhlnIPcV/fMX5i4AE.1roos0LvsBfuovk4qzM6zr3nHvFZPN.', 'Ativo', '2026-11-21 10:19:01', NULL, 2, 3),
 (10, 'Carlos Cliente', 'carlos@teste.com', NULL, '', '2000-07-20', '2026-11-21 10:19:01', '$2y$10$pBIdLhlnIPcV/fMX5i4AE.1roos0LvsBfuovk4qzM6zr3nHvFZPN.', 'Ativo', '2026-11-21 10:19:01', NULL, NULL, 1);

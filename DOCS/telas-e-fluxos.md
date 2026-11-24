@@ -46,7 +46,7 @@ No WattGYM, cada formulário envia os dados para a **própria página** (`action
 
 ## Fluxo principal: criar conta, entrar e sair
 
-![Fluxo de acesso ao sistema](fluxo-login.png)
+![Fluxo de acesso ao sistema](telas/fluxo-login.png)
 
 As duas verificações (losangos) são onde o PHP decide o caminho:
 

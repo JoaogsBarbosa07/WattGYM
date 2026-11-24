@@ -34,14 +34,14 @@ E-commerce de produtos para academia. O usuário navega pelo catálogo, cria uma
 
 1. Instale o XAMPP e ligue o Apache e o MySQL.
 2. Copie a pasta `WattGYM` para `C:\xampp\htdocs`.
-3. No phpMyAdmin, importe `database/WattGYM.sql`.
-4. Ainda no phpMyAdmin, com o banco `wattgym` selecionado, importe também `database/sprint01.sql`. Ele cria as colunas e tabelas que o site usa e os usuários de teste. Pode ser importado mais de uma vez sem dar erro.
-5. Confira em `includes/config.php` se o usuário e a senha do MySQL estão corretos (no XAMPP, o padrão é `root` sem senha).
-6. Acesse http://localhost/WattGYM
+3. No phpMyAdmin, crie o banco `wattgym` (agrupamento `utf8mb4_general_ci`) e, com ele selecionado, importe `database/WattGYM.sql`. O arquivo já traz todas as tabelas, inclusive as da Sprint 01, e os usuários de teste.
+4. Confira em `includes/config.php` se o usuário e a senha do MySQL estão corretos (no XAMPP, o padrão é `root` sem senha).
+5. Acesse http://localhost/WattGYM
+
 
 ## Usuários de teste
 
-Criados pelo `database/sprint01.sql` (dados fictícios, senha `123456`):
+Já vêm no `database/WattGYM.sql` (dados fictícios, senha `123456`):
 
 | E-mail | Perfil |
 |--------|--------|
@@ -49,7 +49,7 @@ Criados pelo `database/sprint01.sql` (dados fictícios, senha `123456`):
 | `maria@teste.com` | atendente |
 | `carlos@teste.com` | cliente |
 
-Os usuários que já vêm no `WattGYM.sql` original não têm senha. Em um servidor de verdade, apague esses usuários de teste. Mais detalhes em [docs/instalacao.md](docs/instalacao.md).
+Os usuários da loja que existiam antes da sprint (ids 1 a 6) não têm senha e não conseguem entrar. Em um servidor de verdade, apague os usuários de teste. Mais detalhes em [docs/instalacao.md](docs/instalacao.md).
 
 ## Estrutura
 
@@ -78,8 +78,8 @@ WattGYM/
 │   ├── JS/script.js
 │   └── IMG/
 ├── database/
-│   ├── WattGYM.sql    # banco original
-│   └── sprint01.sql   # ajustes da Sprint 01 e dados de teste
+│   └── WattGYM.sql    # banco completo: estrutura e dados de teste
+|
 ├── docs/              # documentação (requisitos, banco, telas, instalação, manual)
 ├── README.md
 └── CHANGELOG.md

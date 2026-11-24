@@ -1,0 +1,129 @@
+Teste Sprint 01 - gestao de usuarios | 19/11/2026 21:53 | MariaDB 10.11.14-MariaDB-0ubuntu0.24.04.1 | PHP 8.3.6
+Banco de homologacao: dump original + database/sprint01.sql (dados ficticios)
+-----------------------------------------------------------------
+[OK    ] P04 - selects de perfil e setor vem do banco
+         esperado: 6 opcoes (perfis + lojas ativos)
+         obtido:   6 opcoes no HTML
+[OK    ] P04b - setor criado no banco aparece no formulario
+         esperado: 'Setor Teste Novo' no select
+         obtido:   presente
+[OK    ] P04c - setor inativo nao aparece
+         esperado: 'Setor Teste Novo' ausente
+         obtido:   ausente
+[OK    ] T01 - cadastrar usuario valido (nome/email/perfil/setor)
+         esperado: redirect para a lista e exatamente 1 registro
+         obtido:   redirect=usuarios.php?q=joana%40teste.com, registros=1
+[OK    ] P06 - senha gravada com hash e registro persiste apos recarregar
+         esperado: senha comeca com $2y$ e o usuario aparece na listagem
+         obtido:   senha=$2y$; listagem: achou
+[OK    ] P06b - auditoria do cadastro
+         esperado: linha CADASTRO/Sucesso com autor admin
+         obtido:   CADASTRO/Sucesso/autor=7
+[OK    ] T02 - campos vazios e e-mail invalido
+         esperado: recusa, um erro por campo, nada gravado
+         obtido:   http=200, erros mostrados=6, novos registros=0
+[OK    ] T02b - valores digitados sao preservados, senha nao
+         esperado: campo nome/email com valor e senha vazia
+         obtido:   nome preservado; senha nao repetida
+[OK    ] T03 - repetir e-mail ja cadastrado
+         esperado: aviso legivel e nenhum registro novo
+         obtido:   aviso mostrado; registros com esse e-mail=1
+[OK    ] T03b - mensagem nao revela SQL
+         esperado: sem 'SQLSTATE', 'Duplicate' ou 'PDO' na resposta
+         obtido:   0 ocorrencias
+[OK    ] T04 - id de perfil/setor inexistente, nao numerico ou negativo
+         esperado: validacao do servidor bloqueia; nada gravado
+         obtido:   ids 999/999: bloqueado; abc/-1: bloqueado; novos registros=0
+[OK    ] P05 - cadastro sem token CSRF
+         esperado: recusado, nada gravado
+         obtido:   recusado; registros=0
+[OK    ] T05 - buscar nome existente
+         esperado: lista Joana Silva
+         obtido:   achou; 1 usuário(s) ativo(s)
+[OK    ] T05b - buscar por e-mail
+         esperado: lista Admin Teste
+         obtido:   achou
+[OK    ] T05c - buscar nome inexistente
+         esperado: mensagem de zero resultados
+         obtido:   mensagem mostrada
+[OK    ] T06 - JOIN de tres tabelas mostra perfil e setor corretos
+         esperado: linha da Maria com 'atendente Alpha Nutri Center'
+         obtido:   perfil e setor corretos na tela
+[OK    ] T07 - alterar nome do setor no banco muda a listagem sem duplicar em usuarios
+         esperado: nome novo na tela; usuarios sem coluna com nome de setor/perfil
+         obtido:   nome novo na tela; colunas de nome em usuarios=0
+[OK    ] T08 - Excluir mostra a pergunta com nome/ID; Cancelar nao altera nada
+         esperado: caixa com 'Joana Silva', ID #10, botoes; Cancelar volta a lista; status continua Ativo
+         obtido:   caixa=completa; cancelar -> usuarios.php; status=Ativo
+[OK    ] T08b - Cancelar nao gera auditoria
+         esperado: nenhuma linha BAIXA para o usuario
+         obtido:   0 linhas
+[OK    ] T10a - excluir por GET
+         esperado: 405 e usuario preservado
+         obtido:   http=405; status=Ativo
+[OK    ] T10b - POST sem token CSRF
+         esperado: 403 e usuario preservado
+         obtido:   http=403; status=Ativo
+[OK    ] T10c - POST com token falso
+         esperado: 403 e usuario preservado
+         obtido:   http=403; status=Ativo
+[OK    ] T10d - id invalido (abc, 0, texto com SQL)
+         esperado: 400 nos tres e nada alterado
+         obtido:   http=400/400/400; Ativos=10/10
+[OK    ] T10e - id numerico que nao existe
+         esperado: resposta controlada (aviso) e auditoria da rejeicao
+         obtido:   redirect=usuarios.php; auditoria='Rejeitado: usuário não encontrado'
+[OK    ] T10f - cliente e visitante tentando excluir
+         esperado: cliente -> inicio.php; visitante -> login.php; nada alterado
+         obtido:   cliente: lista->inicio.php, POST->inicio.php; visitante: POST->login.php; baixas=0
+[OK    ] T09 - Excluir e confirmar
+         esperado: status Baixa, baixado_em preenchido, some da lista, auditoria registrada
+         obtido:   status=Baixa; baixado_em=preenchido; auditoria=BAIXA/Sucesso/autor=7
+[OK    ] T09b - usuario em Baixa sai dos ativos e o aviso aparece
+         esperado: lista sem Joana e aviso de sucesso
+         obtido:   fora da lista
+[OK    ] T09c - registro preservado no banco (exclusao logica)
+         esperado: linha continua em usuarios com status Baixa
+         obtido:   1 linha
+[OK    ] P10 - usuario em Baixa nao consegue entrar
+         esperado: continua no login com erro generico
+         obtido:   permanece na tela de login (HTTP 200); mensagem generica
+[OK    ] T11 - repetir a confirmacao do mesmo usuario
+         esperado: sem baixa duplicada; aviso controlado; rejeicao auditada
+         obtido:   baixas com sucesso=1; aviso na tela: sim; rejeicoes=1
+[OK    ] T12a - busca com payload de injecao (' OR '1'='1)
+         esperado: tratada como texto: zero resultados
+         obtido:   zero resultados
+[OK    ] T12b - busca por '%' (curinga do LIKE)
+         esperado: tratado como texto comum: zero resultados
+         obtido:   zero resultados
+[OK    ] T12c - busca com <script> e acentos
+         esperado: texto escapado no HTML, sem script ativo
+         obtido:   script cru na pagina: 0; escapado: 2
+[OK    ] T12d - cadastro com nome malicioso
+         esperado: gravado como texto; tabela usuarios intacta; HTML escapado na listagem
+         obtido:   tabela existe=1; gravado='Robert'); DROP TABLE usuarios;-- <b>José</b>'
+[OK    ] T12e - nome malicioso na listagem
+         esperado: <b> escapado (aparece como texto)
+         obtido:   1 ocorrencias escapadas; 0 cruas
+[OK    ] E01 - admin tenta excluir a si mesmo (tela)
+         esperado: sem caixa de confirmacao e com aviso
+         obtido:   sem caixa; aviso mostrado
+[OK    ] E02 - admin tenta excluir a si mesmo (POST forjado)
+         esperado: recusado e admin continua Ativo
+         obtido:   status do admin=Ativo; auditoria='Rejeitado: tentou excluir o próprio usuário'
+[OK    ] E03 - cadastro publico tentando enviar id_perfil=2 / tipo=admin
+         esperado: perfil gravado continua cliente
+         obtido:   perfil=cliente; auditoria=CADASTRO/Sucesso/autor=NULL
+[OK    ] E04 - admin colocado em Baixa com a sessao ainda aberta
+         esperado: antes: 200; depois: redirecionado ao login
+         obtido:   antes=200; depois=login.php
+[OK    ] E05 - tabela de perfis sem registro ativo
+         esperado: formulario nao aparece; mensagem explica
+         obtido:   sem formulario; mensagem mostrada
+[OK    ] P03 - banco indisponivel (simulado trocando o nome do banco)
+         esperado: mensagem generica, sem detalhes tecnicos, HTTP 500
+         obtido:   http=500; texto='Não foi possível conectar ao sistema. Tente novamente mais tarde.'; vazou detalhe: 0
+-----------------------------------------------------------------
+Resultado: 41 verificacoes OK, 0 falharam
+Erros/avisos PHP no log do servidor: 0
