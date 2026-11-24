@@ -1,11 +1,10 @@
-
 <?php
 /**
  * header.php
  *
  * Topo e menu de todas as páginas. Inicia a sessão (precisa ser antes de
  * qualquer HTML) e mostra os links certos: Login para visitante, Perfil e Sair
- * para quem entrou, e Dashboard só para administrador.
+ * para quem entrou, e Dashboard e Usuários só para administrador.
  *
  * @author João Gabriel
  */
@@ -13,7 +12,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
- 
+
 $logado = isset($_SESSION['id_usuario']);
 $admin  = $logado && ($_SESSION['tipo_usuario'] ?? '') === 'admin';
 ?>
@@ -27,14 +26,14 @@ $admin  = $logado && ($_SESSION['tipo_usuario'] ?? '') === 'admin';
     <link rel="stylesheet" href="assets/CSS/style.css">
     <script src="assets/JS/script.js" defer></script>
 </head>
- 
+
 <body>
     <header>
         <div class="logo">
             <img src="assets/IMG/watt_.jpg" alt="Logo WattGYM">
             <h3>Watt<span>GYM</span></h3>
         </div>
- 
+
         <nav>
             <ul>
                 <li><a href="inicio.php">Home</a></li>
@@ -50,10 +49,11 @@ $admin  = $logado && ($_SESSION['tipo_usuario'] ?? '') === 'admin';
                 </li>
                 <li><a href="sobre.php">Sobre</a></li>
                 <li><a href="contato.php">Contato</a></li>
- 
+
                 <?php if ($logado): ?>
                     <?php if ($admin): ?>
                         <li><a href="dashboard.php">Dashboard</a></li>
+                        <li><a href="usuarios.php">Usuários</a></li>
                     <?php endif; ?>
                     <li><a href="perfil.php">Perfil</a></li>
                     <li><a href="logout.php">Sair</a></li>
@@ -63,4 +63,3 @@ $admin  = $logado && ($_SESSION['tipo_usuario'] ?? '') === 'admin';
             </ul>
         </nav>
     </header>
- 

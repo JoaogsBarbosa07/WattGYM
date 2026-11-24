@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18/11/2026 às 02:43
+-- Tempo de geração: 21/11/2026 às 14:27
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `wattgym`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `auditoria_usuarios`
+--
+
+CREATE TABLE `auditoria_usuarios` (
+  `id_auditoria` int(11) NOT NULL,
+  `id_usuario_alvo` int(11) DEFAULT NULL COMMENT 'Usuário que sofreu a ação (NULL se não existia)',
+  `acao` varchar(30) NOT NULL COMMENT 'CADASTRO ou BAIXA',
+  `id_autor` int(11) DEFAULT NULL COMMENT 'Quem executou. NULL em cadastro feito pelo próprio visitante',
+  `data_hora` datetime NOT NULL DEFAULT current_timestamp(),
+  `resultado` varchar(150) NOT NULL COMMENT 'Sucesso ou o motivo da rejeição. Sem dados sensíveis'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Histórico de cadastros e baixas de usuários';
 
 -- --------------------------------------------------------
 
@@ -78,6 +93,7 @@ CREATE TABLE `enderecos` (
   `id_endereco` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `cep` char(8) NOT NULL,
+  `rua` varchar(100) NOT NULL DEFAULT '',
   `numero` varchar(10) NOT NULL,
   `complemento` varchar(50) DEFAULT NULL,
   `bairro` varchar(50) NOT NULL,
@@ -89,13 +105,13 @@ CREATE TABLE `enderecos` (
 -- Despejando dados para a tabela `enderecos`
 --
 
-INSERT INTO `enderecos` (`id_endereco`, `id_usuario`, `cep`, `numero`, `complemento`, `bairro`, `cidade`, `uf`) VALUES
-(1, 1, '67325361', '100', 'casa 1', 'Janga', 'Paulista', 'PE'),
-(2, 1, '08764578', '150', 'casa 2', 'Janga', 'Paulista', 'PE'),
-(3, 1, '08754567', '50', 'casa 3', 'Janga', 'Paulista', 'PE'),
-(4, 2, '23465434', '10', 'apto 10', 'Boa Viagem', 'Recife', 'PE'),
-(5, 3, '76543212', '1', 'casa 4', 'agora não sei', 'Recife', 'PE'),
-(6, 1, '44354361', '287', 'casa 1', 'Valentina', 'Joao Pessoa', 'PB');
+INSERT INTO `enderecos` (`id_endereco`, `id_usuario`, `cep`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `uf`) VALUES
+(1, 1, '67325361', '', '100', 'casa 1', 'Janga', 'Paulista', 'PE'),
+(2, 1, '08764578', '', '150', 'casa 2', 'Janga', 'Paulista', 'PE'),
+(3, 1, '08754567', '', '50', 'casa 3', 'Janga', 'Paulista', 'PE'),
+(4, 2, '23465434', '', '10', 'apto 10', 'Boa Viagem', 'Recife', 'PE'),
+(5, 3, '76543212', '', '1', 'casa 4', 'agora não sei', 'Recife', 'PE'),
+(6, 1, '44354361', '', '287', 'casa 1', 'Valentina', 'Joao Pessoa', 'PB');
 
 -- --------------------------------------------------------
 
@@ -123,17 +139,32 @@ CREATE TABLE `lojas` (
   `cnpj` char(14) NOT NULL,
   `email` varchar(255) NOT NULL,
   `telefone` varchar(15) NOT NULL,
-  `data_cadastro` datetime DEFAULT current_timestamp()
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  `ativo` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `lojas`
 --
 
-INSERT INTO `lojas` (`id_loja`, `nome_fantasia`, `cnpj`, `email`, `telefone`, `data_cadastro`) VALUES
-(1, 'WattGYM Oficial', '12345678000199', 'Ricardosexy@wattgym.com', '81999999999', '2026-10-21 19:50:23'),
-(2, 'Alpha Nutri Center', '98765432000188', 'Sapeca@alphanutri.com', '81988888888', '2026-10-21 19:50:23'),
-(3, 'tchutchuco lab', '52523523532325', 'lerdo@tchutchucolab.com', '81993323292', '2026-10-21 19:50:23');
+INSERT INTO `lojas` (`id_loja`, `nome_fantasia`, `cnpj`, `email`, `telefone`, `data_cadastro`, `ativo`) VALUES
+(1, 'WattGYM Oficial', '12345678000199', 'Ricardosexy@wattgym.com', '81999999999', '2026-10-21 19:50:23', 1),
+(2, 'Alpha Nutri Center', '98765432000188', 'Sapeca@alphanutri.com', '81988888888', '2026-10-21 19:50:23', 1),
+(3, 'tchutchuco lab', '52523523532325', 'lerdo@tchutchucolab.com', '81993323292', '2026-10-21 19:50:23', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `mensagens_contato`
+--
+
+CREATE TABLE `mensagens_contato` (
+  `id_mensagem` int(11) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `assunto` varchar(150) NOT NULL,
+  `mensagem` text NOT NULL,
+  `data_envio` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -195,6 +226,27 @@ INSERT INTO `pedidos` (`id_pedido`, `id_usuario`, `id_endereco`, `status_pedido`
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `perfis`
+--
+
+CREATE TABLE `perfis` (
+  `id_perfil` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Perfis de acesso dos usuários';
+
+--
+-- Despejando dados para a tabela `perfis`
+--
+
+INSERT INTO `perfis` (`id_perfil`, `nome`, `ativo`) VALUES
+(1, 'cliente', 1),
+(2, 'admin', 1),
+(3, 'atendente', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `produtos`
 --
 
@@ -250,27 +302,45 @@ CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `cpf` char(11) NOT NULL,
+  `cpf` char(11) DEFAULT NULL,
   `telefone` varchar(15) NOT NULL,
   `data_de_nascimento` date NOT NULL,
-  `data_cadastro` datetime DEFAULT current_timestamp()
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  `senha` varchar(255) NOT NULL DEFAULT '',
+  `status` enum('Ativo','Baixa') NOT NULL DEFAULT 'Ativo',
+  `atualizado_em` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `baixado_em` datetime DEFAULT NULL,
+  `id_loja` int(11) DEFAULT NULL,
+  `id_perfil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `cpf`, `telefone`, `data_de_nascimento`, `data_cadastro`) VALUES
-(1, 'Cauã Carlos', 'carlosloli@email.com', '11122233301', '81991112222', '1995-03-12', '2026-10-21 19:25:05'),
-(2, 'Vitor Miguel', 'VTR@email.com', '22233344402', '81992223333', '1998-07-25', '2026-10-21 19:25:05'),
-(3, 'Rafael Santana', 'pega_casada@email.com', '33344455503', '81993334444', '2001-11-05', '2026-10-21 19:25:05'),
-(4, 'Luiz Arthur', 'SR.perguntas@email.com', '44455566604', '81994445555', '1992-01-30', '2026-10-21 19:25:05'),
-(5, 'Jalyson Henrique', 'Willy_Wonka@email.com', '55566677705', '81995556666', '2000-09-18', '2026-10-21 19:25:05'),
-(6, 'Joao Bigode', 'Odonodessadelicia@email.com', '99988877766', '81998887766', '1590-05-15', '2026-10-26 19:21:06');
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `cpf`, `telefone`, `data_de_nascimento`, `data_cadastro`, `senha`, `status`, `atualizado_em`, `baixado_em`, `id_loja`, `id_perfil`) VALUES
+(1, 'Cauã Carlos', 'carlosloli@email.com', '11122233301', '81991112222', '1995-03-12', '2026-10-21 19:25:05', '', 'Ativo', '2026-11-21 10:19:01', NULL, 1, 1),
+(2, 'Vitor Miguel', 'VTR@email.com', '22233344402', '81992223333', '1998-07-25', '2026-10-21 19:25:05', '', 'Ativo', '2026-11-21 10:19:01', NULL, 1, 1),
+(3, 'Rafael Santana', 'pega_casada@email.com', '33344455503', '81993334444', '2001-11-05', '2026-10-21 19:25:05', '', 'Ativo', '2026-11-21 10:19:00', NULL, NULL, 1),
+(4, 'Luiz Arthur', 'SR.perguntas@email.com', '44455566604', '81994445555', '1992-01-30', '2026-10-21 19:25:05', '', 'Ativo', '2026-11-21 10:19:00', NULL, NULL, 1),
+(5, 'Jalyson Henrique', 'Willy_Wonka@email.com', '55566677705', '81995556666', '2000-09-18', '2026-10-21 19:25:05', '', 'Ativo', '2026-11-21 10:19:00', NULL, NULL, 1),
+(6, 'Joao Bigode', 'Odonodessadelicia@email.com', '99988877766', '81998887766', '1590-05-15', '2026-10-26 19:21:06', '', 'Ativo', '2026-11-21 10:19:00', NULL, NULL, 1),
+(7, 'Bigode', 'hemogenin@gmail.com', '', '', '2012-12-12', '2026-11-18 00:54:35', '$2y$10$QeY66LISy1MV0V65F1/y7.jWe7ogQ/i.OQ9dCyYubkGH5oTZGZco6', 'Ativo', '2026-11-21 10:19:00', NULL, NULL, 2),
+(8, 'Admin Teste', 'admin@teste.com', NULL, '', '1990-01-01', '2026-11-21 10:19:01', '$2y$10$pBIdLhlnIPcV/fMX5i4AE.1roos0LvsBfuovk4qzM6zr3nHvFZPN.', 'Ativo', '2026-11-21 10:19:01', NULL, 1, 2),
+(9, 'Maria Atendente', 'maria@teste.com', NULL, '', '1995-03-15', '2026-11-21 10:19:01', '$2y$10$pBIdLhlnIPcV/fMX5i4AE.1roos0LvsBfuovk4qzM6zr3nHvFZPN.', 'Ativo', '2026-11-21 10:19:01', NULL, 2, 3),
+(10, 'Carlos Cliente', 'carlos@teste.com', NULL, '', '2000-07-20', '2026-11-21 10:19:01', '$2y$10$pBIdLhlnIPcV/fMX5i4AE.1roos0LvsBfuovk4qzM6zr3nHvFZPN.', 'Ativo', '2026-11-21 10:19:01', NULL, NULL, 1);
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `auditoria_usuarios`
+--
+ALTER TABLE `auditoria_usuarios`
+  ADD PRIMARY KEY (`id_auditoria`),
+  ADD KEY `idx_auditoria_alvo` (`id_usuario_alvo`),
+  ADD KEY `fk_auditoria_autor` (`id_autor`);
 
 --
 -- Índices de tabela `categorias`
@@ -309,6 +379,12 @@ ALTER TABLE `lojas`
   ADD UNIQUE KEY `cnpj` (`cnpj`);
 
 --
+-- Índices de tabela `mensagens_contato`
+--
+ALTER TABLE `mensagens_contato`
+  ADD PRIMARY KEY (`id_mensagem`);
+
+--
 -- Índices de tabela `pagamentos`
 --
 ALTER TABLE `pagamentos`
@@ -325,6 +401,13 @@ ALTER TABLE `pedidos`
   ADD KEY `fk_pedidos_cupons` (`id_cupom`);
 
 --
+-- Índices de tabela `perfis`
+--
+ALTER TABLE `perfis`
+  ADD PRIMARY KEY (`id_perfil`),
+  ADD UNIQUE KEY `uk_perfis_nome` (`nome`);
+
+--
 -- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -338,11 +421,19 @@ ALTER TABLE `produtos`
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `cpf` (`cpf`);
+  ADD UNIQUE KEY `cpf` (`cpf`),
+  ADD KEY `fk_usuarios_perfil` (`id_perfil`),
+  ADD KEY `fk_usuarios_loja` (`id_loja`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `auditoria_usuarios`
+--
+ALTER TABLE `auditoria_usuarios`
+  MODIFY `id_auditoria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
@@ -375,6 +466,12 @@ ALTER TABLE `lojas`
   MODIFY `id_loja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de tabela `mensagens_contato`
+--
+ALTER TABLE `mensagens_contato`
+  MODIFY `id_mensagem` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `pagamentos`
 --
 ALTER TABLE `pagamentos`
@@ -387,6 +484,12 @@ ALTER TABLE `pedidos`
   MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
+-- AUTO_INCREMENT de tabela `perfis`
+--
+ALTER TABLE `perfis`
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -396,11 +499,18 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `auditoria_usuarios`
+--
+ALTER TABLE `auditoria_usuarios`
+  ADD CONSTRAINT `fk_auditoria_alvo` FOREIGN KEY (`id_usuario_alvo`) REFERENCES `usuarios` (`id_usuario`),
+  ADD CONSTRAINT `fk_auditoria_autor` FOREIGN KEY (`id_autor`) REFERENCES `usuarios` (`id_usuario`) ON DELETE SET NULL;
 
 --
 -- Restrições para tabelas `enderecos`
@@ -435,6 +545,13 @@ ALTER TABLE `pedidos`
 ALTER TABLE `produtos`
   ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`id_loja`) REFERENCES `lojas` (`id_loja`),
   ADD CONSTRAINT `produtos_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`);
+
+--
+-- Restrições para tabelas `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_usuarios_loja` FOREIGN KEY (`id_loja`) REFERENCES `lojas` (`id_loja`),
+  ADD CONSTRAINT `fk_usuarios_perfil` FOREIGN KEY (`id_perfil`) REFERENCES `perfis` (`id_perfil`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

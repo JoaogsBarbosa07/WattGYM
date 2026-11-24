@@ -10,6 +10,9 @@ Bem-vindo à WattGYM, a loja de produtos para academia. Este manual ensina, pass
 - Como editar meus dados e meu endereço
 - Como falar com a loja
 - (Administrador) Como ver o painel da loja
+- (Administrador) Como ver e buscar usuários
+- (Administrador) Como cadastrar um usuário
+- (Administrador) Como excluir um usuário
 - Perguntas frequentes
 
 ## O menu do site
@@ -24,8 +27,9 @@ No topo de todas as páginas fica o menu:
 | **Contato** | Para falar com a loja |
 | **Login** | Para entrar no site (aparece só se você não entrou ainda) |
 | **Perfil** e **Sair** | Aparecem depois que você entra |
-| **Dashboard** | Aparece só para o administrador da loja |
+| **Dashboard** e **Usuários** | Aparecem só para o administrador da loja |
 
+---
 
 ## Como criar minha conta
 
@@ -44,17 +48,18 @@ Você só precisa criar a conta uma vez.
 
 Pronto! Aparece a mensagem "Cadastro realizado com sucesso!". Toque em **Faça seu login aqui** para entrar.
 
- **Dica: para conferir o que digitou, toque no desenho do olho ao lado da senha. Toque de novo para esconder.**
+> **Dica:** para conferir o que digitou, toque no desenho do olho ao lado da senha. Toque de novo para esconder.
 
- **Atenção: cada e-mail só pode ter uma conta. Se aparecer "Este e-mail já está cadastrado!", você já tem conta. Vá para o login.**
+> **Atenção:** cada e-mail só pode ter uma conta. Se aparecer "Este e-mail já está cadastrado!", você já tem conta. Vá para o login.
 
+---
 
 ## Como entrar e sair do site
 
 ### Entrar
 
 1. No menu, toque em **Login**.
-2. Digite o seu **email**.
+2. Digite o seu **e-mail**.
 3. Digite a sua **senha**.
 4. Toque em **Entrar**.
 
@@ -70,6 +75,7 @@ Se aparecer "E-mail ou senha incorretos.", confira se digitou tudo certo. Cuidad
 
 Você volta para a tela de login. Sempre saia do site quando usar um computador que não é seu.
 
+---
 
 ## Como ver os produtos
 
@@ -83,6 +89,7 @@ Na página inicial, em **Mais procurados**, você vê os destaques da loja.
 
 > **Atenção:** o botão **Comprar** ainda não finaliza compras. A compra pelo site será liberada em breve.
 
+---
 
 ## Como editar meus dados e meu endereço
 
@@ -105,8 +112,9 @@ Algumas informações importantes:
 - Se você preencher parte do endereço, o site avisa quais campos faltam.
 - Nome e e-mail são obrigatórios. O resto pode ficar em branco.
 
- **Atenção: se aparecer "Este e-mail já está em uso por outra conta.", escolha outro e-mail.**
+> **Atenção:** se aparecer "Este e-mail já está em uso por outra conta.", escolha outro e-mail.
 
+---
 
 ## Como falar com a loja
 
@@ -124,7 +132,7 @@ Pronto! Aparece "Mensagem enviada! Responderemos em breve."
 
 Do lado esquerdo da tela, você também encontra o e-mail, o telefone e o endereço da loja.
 
-
+---
 
 ## (Administrador) Como ver o painel da loja
 
@@ -156,8 +164,48 @@ Cada status tem uma cor:
 
 Pedidos **Entregues** e **Cancelados** não aparecem nessa lista.
 
- **Atenção: se você é cliente e tentar abrir o painel, o site leva você de volta para a página inicial. O painel é só para administradores.**
+> **Atenção:** se você é cliente e tentar abrir o painel, o site leva você de volta para a página inicial. O painel é só para administradores.
 
+---
+
+## (Administrador) Como ver e buscar usuários
+
+1. No menu, toque em **Usuários**.
+2. A tabela mostra cada usuário com o **nome**, o **e-mail**, o **perfil** (cliente, atendente ou admin) e o **setor**. Quem se cadastrou pelo site não tem setor, e aparece com um traço (—).
+3. Para procurar alguém, digite parte do nome ou do e-mail no campo de busca e toque em **Buscar**.
+4. Para ver a lista completa de novo, toque em **Limpar**.
+
+![Lista de usuários](telas/usuarios.png)
+
+Se ninguém for encontrado, aparece "Nenhum usuário encontrado para essa busca.". Usuários excluídos não aparecem na lista.
+
+## (Administrador) Como cadastrar um usuário
+
+1. Em **Usuários**, toque em **Novo usuário**.
+2. Preencha o **nome**, o **e-mail** e a **data de nascimento**.
+3. Crie uma **senha inicial** com pelo menos 6 caracteres e passe para a pessoa.
+4. Escolha o **perfil** e o **setor** nas listas.
+5. Toque em **Cadastrar usuário**.
+
+![Novo usuário](telas/usuario-novo.png)
+
+Pronto! Você volta para a lista, já mostrando o usuário novo, com a mensagem "Usuário cadastrado com sucesso.".
+
+Se algum campo estiver errado, a mensagem em vermelho aparece embaixo dele, e o que você já digitou continua na tela. Só a senha precisa ser digitada de novo.
+
+> **Atenção:** se aparecer "Este e-mail já está cadastrado.", essa pessoa já tem uma conta. Se as listas de perfil ou setor estiverem vazias, o formulário avisa que é preciso cadastrar pelo menos um de cada antes.
+
+## (Administrador) Como excluir um usuário
+
+1. Em **Usuários**, procure a pessoa e toque em **Excluir**, na última coluna.
+2. Aparece a pergunta **"Deseja realmente excluir este usuário?"**, com o nome, o e-mail e o número do usuário. Confira se é a pessoa certa.
+3. Toque em **Confirmar** para excluir, ou em **Cancelar** para desistir.
+
+![Confirmação de exclusão](telas/confirmar-exclusao.png)
+
+Ao confirmar, o usuário some da lista e não consegue mais entrar no site. Aparece "Usuário excluído com sucesso.". Ao cancelar, nada muda.
+
+> **Atenção:** o histórico do usuário é mantido (a exclusão é lógica), e todas as exclusões ficam registradas. Você não pode excluir o seu próprio usuário.
 
 ## Perguntas frequentes
 
@@ -167,8 +215,11 @@ O site ainda não tem a opção de recuperar a senha. Entre em contato com a loj
 **Não consigo entrar, mesmo com o e-mail certo.**
 Confira a senha, letra por letra. Se a sua conta foi criada antes do site pedir senha, ela não tem senha. Nesse caso, crie uma conta nova.
 
-**Por que não aparece o botão Dashboard no meu menu?**
-Porque ele é só para administradores da loja. Clientes não têm acesso.
+**Por que não aparecem Dashboard e Usuários no meu menu?**
+Porque eles são só para administradores da loja. Clientes e atendentes não têm acesso.
+
+**Excluí um usuário sem querer. Dá para desfazer?**
+A tela não tem a opção de desfazer, mas o usuário não foi apagado: ele só ficou em Baixa. Quem cuida do banco de dados consegue reativá-lo.
 
 **O botão Comprar não faz nada.**
 É isso mesmo por enquanto. A compra pelo site ainda está sendo desenvolvida. Você já pode ver os produtos e os preços.

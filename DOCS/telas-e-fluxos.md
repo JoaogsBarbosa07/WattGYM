@@ -14,14 +14,17 @@ O mapa do sistema: quais telas existem, quem pode abrir cada uma e para onde cad
 | Login | `login.php` | Visitante | Entra com e-mail e senha. Quem já está logado vai para `inicio.php`. |
 | Perfil | `perfil.php` | Usuário logado | Edita dados pessoais e endereço. Sem login, vai para `login.php`. |
 | Dashboard | `dashboard.php` | Administrador | Mostra pedidos, produtos, clientes, faturamento e pedidos em aberto. Sem login, vai para `login.php`. Cliente logado vai para `inicio.php`. |
+| Usuários | `usuarios.php` | Administrador | Lista os usuários ativos com perfil e setor, busca por nome ou e-mail e mostra a caixa de confirmação de exclusão. |
+| Novo usuário | `usuario_novo.php` | Administrador | Cadastra um usuário escolhendo perfil e setor em listas vindas do banco. |
 
 ### Arquivos que fazem parte de todas as telas
 
 | Arquivo | Função |
 |---------|--------|
-| `header.php` | Topo e menu. Inicia a sessão e mostra os links certos: **Login** para visitante, **Perfil** e **Sair** para quem entrou, e **Dashboard** só para administrador. |
+| `header.php` | Topo e menu. Inicia a sessão e mostra os links certos: **Login** para visitante, **Perfil** e **Sair** para quem entrou, e **Dashboard** e **Usuários** só para administrador. |
 | `footer.php` | Rodapé com navegação e contato. |
 | `includes/config.php` | Conexão com o banco (PDO). Usado pelas páginas que consultam o banco. |
+| `includes/funcoes.php` | Funções da gestão de usuários: confere se é administrador ativo, token CSRF, auditoria e avisos entre páginas. |
 | `assets/CSS/style.css` | Visual do site. |
 | `assets/JS/script.js` | Mostrar/ocultar senha, máscaras de CPF, telefone e CEP, e confirmação ao mudar o telefone. |
 | `index.php` | Só redireciona para a página inicial. |
@@ -37,6 +40,9 @@ No WattGYM, cada formulário envia os dados para a **própria página** (`action
 | `logout.php` | GET | — | Limpa a sessão, apaga o cookie e destrói a sessão | `login.php` |
 | `perfil.php` | POST | nome, e-mail, CPF, telefone, endereço | Valida, confere se o e-mail é de outra conta e atualiza `usuarios` e `enderecos` numa transação | Fica na mesma tela, com a mensagem |
 | `contato.php` | POST | e-mail, assunto, mensagem | Valida e grava em `mensagens_contato` | Fica na mesma tela, com a mensagem |
+| `usuario_novo.php` | POST | nome, e-mail, nascimento, senha, perfil, setor, token CSRF | Valida tudo no servidor (inclusive se perfil e setor existem e estão ativos), grava em `usuarios` e registra a auditoria | `usuarios.php`, já filtrando o usuário novo. Com erro, fica na mesma tela |
+| `usuario_excluir.php` | POST | id do usuário, token CSRF | Confere método, permissão, token e id. Coloca o usuário em Baixa e registra a auditoria na mesma transação | `usuarios.php`, com aviso. Por GET devolve 405, sem token 403, com id inválido 400 |
+
 
 ## Fluxo principal: criar conta, entrar e sair
 
@@ -57,6 +63,15 @@ A tela de **Perfil** só abre para quem está logado, e o **Dashboard** só para
 4. Se algo estiver errado, a tela volta com o aviso e **mantém o que foi digitado**.
 5. Se tudo estiver certo, grava `usuarios` e `enderecos` juntos (se uma das gravações falhar, nenhuma vale) e mostra "Alterações salvas com sucesso!".
 
+## Fluxo de exclusão de usuário
+
+1. O administrador abre **Usuários** e clica em **Excluir** na linha de um usuário. O link abre a mesma página com `?excluir=ID`, que mostra a caixa **"Deseja realmente excluir este usuário?"**, com nome, e-mail, perfil e ID.
+2. **Cancelar** é só um link de volta para a lista. Nada é enviado, e o banco não muda.
+3. **Confirmar** envia um POST para `usuario_excluir.php` com o ID e o token CSRF.
+4. O PHP confere, nesta ordem: método POST, administrador ativo, token CSRF, ID válido, e se o administrador não está excluindo a si mesmo.
+5. O PHP faz `UPDATE ... SET status = 'Baixa' ... WHERE status = 'Ativo'` e grava a auditoria na mesma transação. Se o usuário já estava em Baixa, nenhuma linha muda: o sistema avisa e registra a rejeição.
+6. A lista é mostrada de novo, sem o usuário, com a mensagem de sucesso.
+
 ## Telas planejadas
 
 Estas telas ainda não existem. Os botões **Comprar** do catálogo ainda não fazem nada.
@@ -70,4 +85,4 @@ Estas telas ainda não existem. Os botões **Comprar** do catálogo ainda não f
 
 ## Capturas de tela
 
-Os prints de cada tela ficam em `docs/telas/` e são usados no manual do usuário: `cadastro.png`, `login.png`, `produtos.png`, `perfil.png`, `contato.png` e `dashboard.png`.
+Os prints de cada tela ficam em `docs/telas/` e são usados no manual do usuário: `cadastro.png`, `login.png`, `produtos.png`, `perfil.png`, `contato.png`, `dashboard.png`, `usuarios.png`, `usuario-novo.png` e `confirmar-exclusao.png`.

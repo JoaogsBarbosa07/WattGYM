@@ -1094,8 +1094,183 @@ td {
     color: #fff;
 }
  
-.container_perfil .alerta.sucesso { background-color: #27ae60; }
-.container_perfil .alerta.erro    { background-color: #c0392b; }
+.container_perfil .alerta.sucesso { 
+    background-color: #27ae60; 
+}
+.container_perfil .alerta.erro    { 
+    background-color: #c0392b; 
+}
+/*Gestão de usuários */
+ 
+.gestao-usuarios {
+    width: calc(100% - 60px);
+    max-width: 1400px;
+    margin: 30px auto;
+}
+ 
+.gestao-usuarios h2 {
+    margin: 0 0 18px;
+    font-size: 32px;
+    color: chocolate;
+}
+ 
+.gestao-usuarios .alerta,
+.container_perfil .alerta {
+    margin: 0 0 18px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #fff;
+}
+.gestao-usuarios .alerta.sucesso { 
+    background-color: #27ae60; 
+}
+.gestao-usuarios .alerta.erro    { 
+    background-color: #c0392b; 
+}
+ 
+.barra-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+}
+ 
+.form-busca {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+ 
+.form-busca input[type="search"] {
+    width: 280px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fdf8ee;
+}
+ 
+.form-busca button,
+.btn-novo {
+    padding: 10px 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: chocolate;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+ 
+.form-busca button:hover,
+.btn-novo:hover { background-color: #b5571a; }
+ 
+.link-limpar { color: #2f1d15; }
+ 
+.contagem { margin: 14px 0 0; color: #3b2a22; }
+ 
+.gestao-usuarios table {
+    width: 100%;
+    margin: 10px 0 30px;
+}
+ 
+.link-excluir {
+    color: #a93226;
+    font-weight: bold;
+}
+ 
+/* Texto só para leitores de tela */
+.so-leitor {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+ 
+/*Caixa de confirmação*/
+.modal-fundo {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+ 
+.modal {
+    width: 100%;
+    max-width: 440px;
+    padding: 28px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+ 
+.modal h3 { margin: 0 0 14px; color: #2f1d15; }
+.modal p { margin: 0 0 10px; color: #3b3b3b; }
+.modal-aviso { font-size: 14px; color: #777; }
+ 
+.modal-botoes {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+ 
+.btn-cancelar,
+.btn-confirmar {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+ 
+.btn-cancelar {
+    color: #2f1d15;
+    background-color: #f5e3bc;
+    border: none;
+}
+ 
+.btn-confirmar {
+    color: #fff;
+    background-color: #c0392b;
+    border: none;
+}
+ 
+.btn-confirmar:hover { background-color: #a93226; }
+ 
+/* ---------- Formulário de novo usuário ---------- */
+.container_perfil select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    font-size: 15px;
+    color: #3b3b3b;
+    background-color: #fdf8ee;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+ 
+.container_perfil select:focus {
+    border-color: chocolate;
+    box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.2);
+    outline: none;
+}
+ 
+.erro-campo {
+    display: block;
+    margin-top: 2px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #c0392b;
+}
+ 
  
 
 /*rodape das paginas*/

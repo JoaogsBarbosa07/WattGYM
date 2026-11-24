@@ -7,12 +7,40 @@ O número da versão segue o padrão MAIOR.MENOR.CORREÇÃO. Enquanto o sistema 
 ## [Não lançado]
 
 ### Planejado
-- Carrinho de compras e finalização de pedidos 
-- Cupom de desconto e histórico de pedidos 
-- Barra de pesquisa 
-- Alteração do status dos pedidos pelo dashboard 
+- Carrinho de compras e finalização de pedidos (RF07, RF08).
+- Cupom de desconto e histórico de pedidos (RF09, RF12).
+- Barra de pesquisa (RF11).
+- Alteração do status dos pedidos pelo dashboard (RF10).
 - Catálogo lendo os produtos direto do banco.
-- Layout responsivo para celular 
+- Layout responsivo para celular (RNF06).
+
+## [0.3.0] - 2026-11-19
+
+Sprint 01: gestão de usuários.
+
+### Adicionado
+- Página **Usuários** (`usuarios.php`): lista de usuários ativos com perfil e setor (JOIN), busca por nome ou e-mail e mensagem para zero resultados (RF13, RF14).
+- Página **Novo usuário** (`usuario_novo.php`): cadastro pelo administrador, com perfil e setor em listas vindas do banco, validação no servidor e erro por campo (RF15).
+- Exclusão lógica de usuário (`usuario_excluir.php`): caixa de confirmação com Cancelar e Confirmar, só por POST, com token CSRF, status `Baixa` e data da baixa (RF16).
+- Auditoria de cadastros e baixas na tabela `auditoria_usuarios`, sem dados sensíveis (RF17).
+- Tabela `perfis` e colunas `status`, `atualizado_em`, `baixado_em`, `id_perfil` e `id_loja` em `usuarios`. `lojas.ativo`.
+- `database/sprint01.sql`: script único, que pode ser executado mais de uma vez, com os ajustes do banco e usuários fictícios de teste.
+- `includes/funcoes.php` (controle de administrador, CSRF, auditoria, avisos) e `usuarios.css`.
+- Documentação: relatório da sprint, evidência dos testes (`docs/evidencias/testes-sprint01.txt`) e atualização do DER, do dicionário de dados, dos requisitos, das telas e do manual.
+
+### Alterado
+- A coluna `usuarios.tipo` foi trocada pela chave estrangeira `id_perfil`. O script converte os valores que já existiam.
+- O login só aceita usuários com status `Ativo`.
+- Dashboard e gestão de usuários conferem no banco, a cada acesso, se o administrador ainda está ativo e continua com o perfil admin.
+- O cadastro pelo site sempre cria o perfil `cliente` e registra a ação na auditoria.
+- O dashboard conta só clientes ativos.
+- O menu do administrador ganhou o link **Usuários**.
+- O README e o guia de instalação passam a usar o `sprint01.sql`, e o usuário de teste agora é `admin@teste.com` (senha `123456`).
+
+### Segurança
+- Exclusão e cadastro de usuário pelo administrador exigem POST com token CSRF.
+- O administrador não consegue excluir o próprio usuário.
+- A busca trata `%`, `_` e aspas como texto, e a saída é sempre escapada.
 
 ## [0.2.0] - 2026-11-18
 
