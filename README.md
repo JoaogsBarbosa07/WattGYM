@@ -49,7 +49,7 @@ Já vêm no `database/WattGYM.sql` (dados fictícios, senha `123456`):
 | `maria@teste.com` | atendente |
 | `carlos@teste.com` | cliente |
 
-Os usuários da loja que existiam antes da sprint (ids 1 a 6) não têm senha e não conseguem entrar. Em um servidor de verdade, apague os usuários de teste. Mais detalhes em [docs/instalacao.md](docs/instalacao.md).
+Os usuários da loja que existiam antes da sprint (ids 1 a 6) não têm senha e não conseguem entrar. Em um servidor de verdade, apague os usuários de teste. Mais detalhes em [DOCS/instalacao.md](DOCS/instalacao.md).
 
 ## Estrutura
 
